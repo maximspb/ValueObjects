@@ -51,8 +51,13 @@ abstract class SingleValueObject
      */
     protected function setValue($value)
     {
-        $success = $this->validator->validate($value);
-        if (!$success) {
+        try {
+            $success = $this->validator->validate($value);
+        } catch (ValidationError $error) {
+            throw $error;
+        }
+
+        if (false === $success) {
             throw new ValidationError($value, 'Value object validation error');
         }
         $this->__value = $this->sanitizer->sanitize($value);

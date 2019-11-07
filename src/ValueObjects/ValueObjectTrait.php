@@ -11,7 +11,7 @@ namespace Runn\ValueObjects;
  * @implements \Runn\ValueObjects\ValueObjectInterface
  */
 trait ValueObjectTrait
-    //implements ValueObjectInterface
+
 {
 
     protected $__value;
@@ -40,7 +40,7 @@ trait ValueObjectTrait
      */
     public static function new($value = null)
     {
-        return new static($value);
+        return new self($value);
     }
 
     /**
@@ -82,7 +82,7 @@ trait ValueObjectTrait
      */
     public function __toString(): string
     {
-        return $this->getValue() ?? '';
+        return (string)$this->getValue() ?? '';
     }
 
     /**

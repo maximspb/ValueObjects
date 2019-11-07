@@ -71,12 +71,14 @@ abstract class ValueObjectsCollection
     /**
      * @return array
      */
-    public function getValue()
+    public function getValue(): array
     {
         $ret = [];
+
         foreach ($this as $key => $el) {
-            $ret[$key] = null !== $el ? $el->getValue() : null;
+            $ret[$key] = $el->getValue() ?? null;
         }
+
         return $ret;
     }
 

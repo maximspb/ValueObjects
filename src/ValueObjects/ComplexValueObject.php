@@ -81,7 +81,10 @@ abstract class ComplexValueObject
     protected $constructed = false;
 
     /**
-     * @param mixed|null $value
+     * ComplexValueObject constructor.
+     * @param null $value
+     * @throws ComplexValueObjectErrors
+     * @throws Exception
      */
     public function __construct($value = null)
     {
@@ -180,11 +183,21 @@ abstract class ComplexValueObject
 
     }
 
+    /**
+     * @param $key
+     * @param $val
+     * @throws Exception
+     */
     protected function innerSet($key, $val)
     {
         $this->setField($key, $val);
     }
 
+    /**
+     * @param $field
+     * @param $value
+     * @throws Exception
+     */
     protected function setField($field, $value)
     {
         if ($this->constructed) {
